@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+/* Design tokens (same values as the original a.css). */
+@theme {
+  --color-ink: #110d3c;
+  --color-brand: #f26633;
+  --color-rust: #c74129;
+  --color-sky: #7dd2ee;
+  --color-muted: #4a4766;
+  --color-mist: #f6f5fa;
+  --color-line: #e6e4f2;
+  --color-wa: #0e7c66;
+  --color-lilac: #d6d3ea;
+  --color-haze: #e9e7f2;
+  --color-edge: #cfcce0;
+  --color-hint: #8c89a6;
+  --color-bar: #eeecf5;
+
+  --font-heading: var(--font-poppins), system-ui, sans-serif;
+  --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --ease-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  /* Breakpoints used by the original design. */
+  --breakpoint-xs: 35.0625rem; /* 561px: below this is "phone" (max-width: 560px) */
+  --breakpoint-tb: 43.75rem; /* 700px */
+  --breakpoint-md: 48rem; /* 768px */
+  --breakpoint-dt: 56.25rem; /* 900px */
+  --breakpoint-hx: 60rem; /* 960px */
+  --breakpoint-lg: 64rem; /* 1024px */
+
+  --animate-shine: shine 5s 2.5s infinite;
+  --animate-ken-burns: ken-burns 20s var(--ease-soft) both;
+  --animate-rise: rise 0.9s var(--ease-soft) both;
+  --animate-pulse-dot: pulse-dot 2s infinite;
+  --animate-highlight: highlight 1.4s var(--ease-soft);
+  --animate-draw: draw 0.6s var(--ease-soft) forwards;
+  --animate-draw-late: draw 0.4s 0.5s var(--ease-soft) forwards;
+  --animate-marquee: marquee var(--dur, 40s) linear infinite;
+  --animate-nudge: nudge 1.6s ease-in-out infinite;
+  --animate-ripple: ripple 2.4s infinite;
+
+  @keyframes shine {
+    0%,
+    72% {
+      left: -60%;
+    }
+    100% {
+      left: 130%;
+    }
+  }
+  @keyframes ken-burns {
+    from {
+      transform: scale(1.15);
+    }
+    to {
+      transform: scale(1.02);
+    }
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes pulse-dot {
+    0% {
+      box-shadow: 0 0 0 0 rgba(242, 102, 51, 0.75);
+    }
+    70%,
+    100% {
+      box-shadow: 0 0 0 10px rgba(242, 102, 51, 0);
+    }
+  }
+  @keyframes highlight {
+    0% {
+      box-shadow:
+        0 0 0 0 rgba(242, 102, 51, 0.85),
+        0 30px 70px rgba(0, 0, 0, 0.35);
+    }
+    100% {
+      box-shadow:
+        0 0 0 22px rgba(242, 102, 51, 0),
+        0 30px 70px rgba(0, 0, 0, 0.35);
+    }
+  }
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes nudge {
+    50% {
+      transform: translateX(5px);
+    }
+  }
+  @keyframes ripple {
+    from {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    to {
+      transform: scale(1.6);
+      opacity: 0;
+    }
+  }
+}
+
+@layer base {
+  :root {
+    --hh: 64px; /* header height */
+  }
+  @media (min-width: 900px) {
+    :root {
+      --hh: 76px;
+    }
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  h1,
+  h2,
+  h3,
+  b {
+    font-family: var(--font-heading);
+  }
+  h1,
+  h2,
+  h3 {
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+  a:focus-visible,
+  button:focus-visible,
+  select:focus-visible {
+    outline: 3px solid var(--color-brand);
+    outline-offset: 3px;
+  }
+}
+
+/* Scroll reveal. PageEffects adds .in when the element enters the viewport.
+   Only active when JS runs (the <html> element gets the "js" class first). */
+@layer components {
+  .js .reveal,
+  .js .stagger > * {
+    opacity: 0;
+    translate: 0 28px;
+    transition:
+      opacity 0.8s var(--ease-soft),
+      translate 0.8s var(--ease-soft),
+      transform 0.3s var(--ease-soft),
+      box-shadow 0.3s;
+  }
+  .js .stagger > * {
+    transition-delay: calc(var(--i, 0) * 90ms), calc(var(--i, 0) * 90ms), 0s, 0s;
+  }
+  .js .reveal.in,
+  .js .stagger.in > * {
+    opacity: 1;
+    translate: none;
+  }
+}
+
+@utility select-chevron {
+  background: #fff
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23110D3C' stroke-width='2'/%3E%3C/svg%3E")
+    no-repeat right 10px center / 11px;
+}
+
+@utility fade-edges {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility frosted {
+  -webkit-backdrop-filter: saturate(1.8) blur(14px);
+  backdrop-filter: saturate(1.8) blur(14px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .js .reveal,
+  .js .stagger > * {
+    opacity: 1;
+    translate: none;
+  }
+}
