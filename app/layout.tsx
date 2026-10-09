@@ -23,12 +23,13 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 };
 
-type LayoutProps<P> = {
-  children: React.ReactNode;
-  params: P;
-};
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     // Landing pages add a "js" class to <html> before React hydrates.
     <html

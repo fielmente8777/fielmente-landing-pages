@@ -12,7 +12,7 @@ function Call({ callNumber }: { callNumber: string }) {
     }
   return (
     <div
-      className={`fixed bottom-10 lg:left-3  left-4 z-20 cursor-pointer`}
+      className={`fixed bottom-10 lg:left-3 max-md:hidden left-4 z-20 cursor-pointer`}
     >
       <Link
         href={`tel: ${callNumber ? callNumber : "+911234567890"} `}

@@ -12,7 +12,7 @@ export default function Whatsapp() {
     <Link
       href={whatsappUrl("")}
       id="whatsapp-button"
-      className="fixed bottom-25 lg:left-3  left-4 z-20 cursor-pointer"
+      className="fixed bottom-25 lg:left-3 max-md:hidden  left-4 z-20 cursor-pointer"
       aria-label="Chat on WhatsApp"
     >
       <div className="w-12 h-12 rounded-full bg-green-500 hover:bg-green-600 flex items-center justify-center shadow-2xl transition-all pointer-events-none">
