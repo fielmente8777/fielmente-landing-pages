@@ -25,6 +25,8 @@ export function MobileBar({ cta, waTopic }: { cta: string; waTopic: string }) {
         className={`${tile} bg-wa text-white`}
         href={whatsappUrl(waTopic)}
         aria-label="WhatsApp us"
+         target="_blank"
+              rel="noopener noreferrer"
       >
         <Icon name="wa" className="h-[22px] w-[22px]" />
       </a>
@@ -43,6 +45,7 @@ export function WhatsAppFloat({ waTopic }: { waTopic: string }) {
       id="whatsapp-button"
       className="fixed bottom-25 lg:left-3 max-md:hidden left-4 z-20 cursor-pointer"
       aria-label="Chat on WhatsApp"
+      
     >
       <div className="w-12 h-12 rounded-full bg-green-500 hover:bg-green-600 flex items-center justify-center shadow-2xl transition-all pointer-events-none">
         <FaWhatsapp size={29} color="white" />

@@ -22,11 +22,23 @@ const variants: Record<Variant, string> = {
   light: "bg-white text-ink shadow-[inset_0_0_0_1.5px_var(--color-line)]",
 };
 
-export function buttonClass(variant: Variant = "primary", size: Size = "md", extra = "") {
+export function buttonClass(
+  variant: Variant = "primary",
+  size: Size = "md",
+  extra = "",
+) {
   return `${base} ${sizes[size]} ${variants[variant]} ${extra}`;
 }
 
-function Content({ children, icon, iconAfter }: { children: ReactNode; icon?: IconName; iconAfter?: IconName }) {
+function Content({
+  children,
+  icon,
+  iconAfter,
+}: {
+  children: ReactNode;
+  icon?: IconName;
+  iconAfter?: IconName;
+}) {
   return (
     <>
       {icon && <Icon name={icon} />}
@@ -41,7 +53,12 @@ function Content({ children, icon, iconAfter }: { children: ReactNode; icon?: Ic
   );
 }
 
-type Common = { variant?: Variant; size?: Size; icon?: IconName; iconAfter?: IconName };
+type Common = {
+  variant?: Variant;
+  size?: Size;
+  icon?: IconName;
+  iconAfter?: IconName;
+};
 
 export function ButtonLink({
   variant,
@@ -53,7 +70,12 @@ export function ButtonLink({
   ...props
 }: Common & ComponentProps<"a">) {
   return (
-    <a className={buttonClass(variant, size, className)} {...props}>
+    <a
+      className={buttonClass(variant, size, className)}
+      {...props}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <Content icon={icon} iconAfter={iconAfter}>
         {children}
       </Content>

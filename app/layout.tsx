@@ -1,11 +1,10 @@
+import Call from "@/components/ContactButton/Call";
+import Salesiq from "@/components/zohochatbot/Salesiq";
+import { SITE_URL } from "@/content/site";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { SITE_URL } from "@/content/site";
-import "./globals.css";
-import Salesiq from "@/components/zohochatbot/Salesiq";
 import Script from "next/script";
-import Call from "@/components/ContactButton/Call";
-import Whatsapp from "@/components/ContactButton/WhatsApp";
+import "./globals.css";
 
 // Self-hosted Poppins (SIL OFL, see app/fonts/OFL.txt). No automatic fallback
 // metrics, so characters Poppins lacks (★) render in system-ui as before.
