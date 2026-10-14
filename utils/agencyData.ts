@@ -1,7 +1,7 @@
+import type { LogoSet, TestimonialKey } from "@/@types/@agencyPageType";
 // Company facts, results, testimonials and client logos used by the agency, industry and service pages.
 // Everything here is already published on fielmente.com (home page, About page, client list,
 // testimonials) or comes from the Google Ads case studies. Edit claims in one place here.
-import type { LogoSet, TestimonialKey } from "@/@types/@agencyPageType";
 
 /* ── Company facts (from the About page and home page) ─────────────────── */
 export const COMPANY = {
