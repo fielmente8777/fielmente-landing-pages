@@ -1,25 +1,41 @@
+"use client";
 
-import { whatsappUrl } from "@/content/site";
-import Link from "next/link";
-import { FaWhatsapp } from "react-icons/fa";
+import { usePathname } from "next/navigation";
+import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
+import { PHONE, whatsappUrl } from "@/content/site";
 
-export default function Whatsapp() {
- 
-
-  
+export default function Whatsapp({ topics }: { topics: Record<string, string> }) {
+  const pathname = usePathname();
+  const slug = pathname.split("/").filter(Boolean)[0] || "";
+  const whatsappHref = whatsappUrl(topics[slug] || "");
 
   return (
-    <Link
-      href={whatsappUrl("")}
-      id="whatsapp-button"
-      className="fixed bottom-25 lg:left-3 max-md:hidden  left-4 z-20 cursor-pointer"
-      aria-label="Chat on WhatsApp"
+    <div
+      role="group"
+      aria-label="Contact Fielmente"
+      className="fixed left-4 lg:left-10 z-20 flex flex-col items-start gap-3"
+      style={{ bottom: "max(1rem, env(safe-area-inset-bottom))" }}
     >
-      <div className="w-12 h-12 rounded-full bg-green-500 hover:bg-green-600 flex items-center justify-center shadow-2xl transition-all pointer-events-none">
-        <FaWhatsapp size={29} color="white" />
-      </div>
-
-      <span className="sr-only pointer-events-none">Chat on WhatsApp</span>
-    </Link>
+      <a
+        id="call-button"
+        href={`tel:${PHONE}`}
+        aria-label="Call Fielmente"
+        title="Call Fielmente"
+        className="call-button flex h-12 w-12 flex-none items-center justify-center rounded-full bg-[#110D3C] text-white shadow-2xl transition-colors hover:bg-[#1B2231] focus-visible:ring-2 focus-visible:ring-[#F26633] focus-visible:ring-offset-2"
+      >
+        <FaPhoneAlt size={23} aria-hidden="true" />
+      </a>
+      <a
+        id="whatsapp-button"
+        href={whatsappHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp"
+        title="Chat on WhatsApp"
+        className="whatsapp-button flex h-12 w-12 flex-none items-center justify-center rounded-full bg-green-500 text-white shadow-2xl transition-colors hover:bg-green-600 focus-visible:ring-2 focus-visible:ring-[#F26633] focus-visible:ring-offset-2"
+      >
+        <FaWhatsapp size={29} aria-hidden="true" />
+      </a>
+    </div>
   );
 }

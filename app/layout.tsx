@@ -1,10 +1,13 @@
-import Call from "@/components/ContactButton/Call";
+import Whatsapp from "@/components/ContactButton/WhatsApp";
+import { pages } from "@/content/pages";
 import Salesiq from "@/components/zohochatbot/Salesiq";
 import { SITE_URL } from "@/content/site";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Script from "next/script";
 import "./globals.css";
+
+const contactTopics = Object.fromEntries(pages.map((page) => [page.slug, page.waTopic]));
 
 // Self-hosted Poppins (SIL OFL, see app/fonts/OFL.txt). No automatic fallback
 // metrics, so characters Poppins lacks (★) render in system-ui as before.
@@ -131,7 +134,7 @@ export default function RootLayout({
         <Salesiq />
       </head>
       <body className="m-0 overflow-x-hidden">{children}
-        <Call callNumber="+91 95018 68775" />
+        <Whatsapp topics={contactTopics} />
       </body>
     </html>
   );

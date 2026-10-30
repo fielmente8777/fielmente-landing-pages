@@ -3,7 +3,7 @@ import { IconSprite } from "@/components/ui/Icon";
 import { GTM_ID } from "@/content/site";
 import { FinalCta } from "./FinalCta";
 import { Hero } from "./Hero";
-import { MobileBar, WhatsAppFloat } from "./MobileBar";
+import { MobileBar } from "./MobileBar";
 import { PageEffects } from "./PageEffects";
 import { Partners } from "./Partners";
 import { SiteFooter } from "./SiteFooter";
@@ -57,8 +57,7 @@ export function LandingPage({ page }: { page: Page }) {
           <FinalCta image={page.finalImage} waTopic={page.waTopic} />
         </main>
         <SiteFooter slug={page.slug} />
-        <MobileBar cta={page.mobileCta} waTopic={page.waTopic} />
-        <WhatsAppFloat waTopic={page.waTopic} />
+        <MobileBar cta={page.mobileCta} />
       </div>
       <PageEffects />
     </>
