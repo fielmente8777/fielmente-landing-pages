@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useId, useState, type FormEvent } from "react";
+import { markLeadSubmitted } from "@/lib/leadPrompt";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { pushEvent } from "@/lib/analytics";
 import { COUNTRY_CODES, normalisePhone, type LeadRequest } from "@/lib/lead";
@@ -17,12 +18,17 @@ export function LeadForm({
   button,
   waTopic,
   pageName,
+  formId = "form",
+  insidePopup = false,
 }: {
   title: string;
   button: string;
   waTopic: string;
   pageName: string;
+  formId?: string;
+  insidePopup?: boolean;
 }) {
+  const phoneId = useId();
   const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
   const [sent, setSent] = useState<Sent | null>(null);
 
@@ -82,6 +88,8 @@ export function LeadForm({
         throw new Error("Lead not saved");
       }
 
+      markLeadSubmitted();
+
       // Redirect the new tab after successful submission.
       if (thankYouTab && !thankYouTab.closed) {
         thankYouTab.location.href = "/thank-you";
@@ -112,10 +120,10 @@ export function LeadForm({
 
   return (
     <form
-      id="form"
+      id={formId}
       aria-label="Free consultation"
       onSubmit={submit}
-      className="flex min-w-0 animate-[rise_.9s_var(--ease-soft)_.3s_both] scroll-mt-[calc(var(--hh)+16px)] flex-col gap-3.5 rounded-[22px] bg-white px-5 py-6 text-ink shadow-[0_30px_70px_rgba(0,0,0,.35)] hx:p-[30px] [&.hl]:animate-highlight"
+      className={`flex min-w-0 ${insidePopup ? "" : "animate-[rise_.9s_var(--ease-soft)_.3s_both]"} scroll-mt-[calc(var(--hh)+16px)] flex-col gap-3.5 rounded-[22px] bg-white px-5 py-6 text-ink shadow-[0_30px_70px_rgba(0,0,0,.35)] hx:p-[30px] [&.hl]:animate-highlight`}
     >
       {sent ? (
         <div
@@ -171,7 +179,7 @@ export function LeadForm({
             />
           </label>
           <div className={field}>
-            <label htmlFor="ph">Phone</label>
+            <label htmlFor={phoneId}>Phone</label>
             <div className="flex gap-2">
               <select
                 className={`${control} select-chevron w-[88px] flex-none pr-[26px] pl-3`}
@@ -184,7 +192,7 @@ export function LeadForm({
               </select>
               <input
                 className={`${control} w-full bg-white px-3.5`}
-                id="ph"
+                id={phoneId}
                 name="phone"
                 type="tel"
                 inputMode="tel"

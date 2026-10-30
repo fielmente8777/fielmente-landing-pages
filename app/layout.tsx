@@ -1,5 +1,6 @@
 import Whatsapp from "@/components/ContactButton/WhatsApp";
 import { pages } from "@/content/pages";
+import GlobalLeadPopup from "@/components/GlobalLeadPopup";
 import Salesiq from "@/components/zohochatbot/Salesiq";
 import { SITE_URL } from "@/content/site";
 import type { Metadata } from "next";
@@ -135,6 +136,7 @@ export default function RootLayout({
       </head>
       <body className="m-0 overflow-x-hidden">{children}
         <Whatsapp topics={contactTopics} />
+        <GlobalLeadPopup topics={contactTopics} />
       </body>
     </html>
   );
