@@ -31,10 +31,10 @@ export async function POST(request: Request) {
   const name = text(body.name, 100);
   const email = text(body.email, 200);
   const countryCode = text(body.countryCode, 5);
-  const phone = (COUNTRY_CODES as readonly string[]).includes(countryCode)
+  const phone = (body.formPurpose === "audit" ? /^\+\d{1,4}$/.test(countryCode) : (COUNTRY_CODES as readonly string[]).includes(countryCode))
     ? normalisePhone(countryCode, text(body.phone, 40))
     : null;
-  if (!name || !EMAIL_PATTERN.test(email) || !phone) return reply(false, 400);
+  if (!name || (!(body.formPurpose === "audit" && !email) && !EMAIL_PATTERN.test(email)) || !phone) return reply(false, 400);
 
   const pageName = text(body.pageName, 150);
   const pagePath = text(body.pagePath, 100);
@@ -48,7 +48,7 @@ export async function POST(request: Request) {
         Name: name,
         email,
         Contact: countryCode + phone,
-        Description: `Landing page: ${pageName} (lp.fielmente.com${pagePath})`,
+        Description: `Landing page: ${pageName} (lp.fielmente.com${pagePath})` + (body.formPurpose === "audit" ? "\n" + text(body.description, 1500) : ""),
         created_from: "webform",
         source_url: text(body.sourceUrl, 2000),
       }),
