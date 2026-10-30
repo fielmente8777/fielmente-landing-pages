@@ -271,7 +271,7 @@ export const pages: LandingPage[] = [
   },
   {
     slug: "hospitality",
-    title: "Hospitality Marketing Agency in India | Fielmente",
+    title: "Hospitality Marketing Agency worldwide | Fielmente",
     description: "Marketing for hotels, resorts, homestays, villas, glamping, cafés and restaurants. 500+ brands since 2020.",
     waTopic: "Hospitality Marketing",
     headerCta: "Free consultation",
@@ -1073,7 +1073,7 @@ export const pages: LandingPage[] = [
   },
   {
     slug: "branding",
-    title: "Hotel & Restaurant Branding Agency in India | Fielmente",
+    title: "Hotel & Restaurant Branding Agency worldwide | Fielmente",
     description: "Hotel, resort and restaurant branding: strategy, logo and identity, websites and launch. Brands guests remember and book.",
     waTopic: "Hotel & Restaurant Branding",
     headerCta: "Free review",
@@ -1156,7 +1156,7 @@ export const pages: LandingPage[] = [
   },
   {
     slug: "revenue-management",
-    title: "Hotel Revenue Management Company in India | Fielmente",
+    title: "Hotel Revenue Management Company worldwide | Fielmente",
     description: "Hotel revenue management: pricing, channel mix, OTA rates and rate parity, with weekly reports. Grow revenue per room.",
     waTopic: "Hotel Revenue Management",
     headerCta: "Free audit",
