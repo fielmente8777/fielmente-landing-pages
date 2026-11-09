@@ -1,5 +1,5 @@
 User-agent: *
+# Crawling stays allowed so Google can see each page's noindex. The pages are ad landing pages
+# and are kept out of search results; the indexable versions live on fielmente.com.
 Allow: /
 Disallow: /api/
-
-Sitemap: https://lp.fielmente.com/sitemap.xml

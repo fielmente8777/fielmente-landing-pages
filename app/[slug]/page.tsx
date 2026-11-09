@@ -25,6 +25,9 @@ export async function generateMetadata({ params }: PageProps<"/[slug]">): Promis
     title: { absolute: page.title },
     description: page.description,
     alternates: { canonical: `/${page.slug}` },
+    // Paid-ads pages stay out of Google so they don't compete with the matching fielmente.com
+    // pages for the same searches. Ads are unaffected: Google Ads still crawls and serves them.
+    robots: { index: false, follow: true, googleBot: { index: false, follow: true } },
     openGraph: {
       title: page.title,
       description: page.description,

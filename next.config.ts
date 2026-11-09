@@ -12,6 +12,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [{ source: "/:slug.html", destination: "/:slug", permanent: true }];
   },
+  // Every page here is a paid-ads landing page: keep the whole host out of Google's index
+  // (same rule fielmente.com applies to its own ad pages). Matches the robots meta on each page.
+  async headers() {
+    return [{ source: "/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, follow" }] }];
+  },
   turbopack: {
     rules: {
       "*.css": {
