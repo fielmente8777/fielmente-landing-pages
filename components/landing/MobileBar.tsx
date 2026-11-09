@@ -1,6 +1,6 @@
 import { ButtonLink } from "@/components/ui/Button";
 
-/** Keep the form CTA between the shared contact controls and SalesIQ on phones. */
+/** On phones, the form CTA sits between the call button (left) and the WhatsApp button (right). */
 export function MobileBar({ cta }: { cta: string }) {
   return (
     <nav
