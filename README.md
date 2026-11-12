@@ -20,6 +20,13 @@ Content, copy and design match the static pages that were live on 9 Oct 2026.
 | Hotel CRM & WhatsApp AI | `/hotel-crm` |
 | Internal index (noindex) | `/` |
 
+### Not indexed in Google (on purpose)
+
+Every page here is `noindex, follow` (robots meta on each page plus an `X-Robots-Tag` header) and there is no sitemap.
+These pages carry the same titles and topics as the main service pages on fielmente.com, so when both were indexed
+Google kept swapping which one ranked and fielmente.com's visibility swung up and down. Ads keep working: Google Ads
+ignores `noindex`. To rank for a topic, improve the matching fielmente.com page instead of indexing a page here.
+
 ## Run locally
 
 ```bash
