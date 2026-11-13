@@ -2,6 +2,7 @@ import type { LandingPage as Page, Section } from "@/content/types";
 import { IconSprite } from "@/components/ui/Icon";
 import { GTM_ID } from "@/content/site";
 import { FinalCta } from "./FinalCta";
+import EazotelAppCTA from "./EazotelAppCTA";
 import { Hero } from "./Hero";
 import { MobileBar } from "./MobileBar";
 import { PageEffects } from "./PageEffects";
@@ -54,6 +55,7 @@ export function LandingPage({ page }: { page: Page }) {
         <main>
           <Hero page={page} pageName={pageName} />
           {page.sections.map((section, i) => renderSection(section, i, page))}
+          <EazotelAppCTA />
           <FinalCta image={page.finalImage} waTopic={page.waTopic} />
         </main>
         <SiteFooter slug={page.slug} />
