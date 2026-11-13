@@ -36,7 +36,18 @@ export function Hero({ page, pageName }: { page: LandingPage; pageName: string }
           <h1 className={`${rise} text-[clamp(34px,8.8vw,64px)] leading-[1.04]`} style={delay(1)}>
             {hero.title}
             <em className="text-brand not-italic">{hero.titleAccent}</em>
+            <span className="mt-3 block text-[0.42em]/[1.3] font-semibold text-white">
+              Fielmente · Hospitality Digital Marketing &amp; Direct Booking Growth
+            </span>
           </h1>
+          <a
+            href="https://www.google.com/partners/agency?id=7707754365"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex max-w-full items-center rounded-full border border-white/40 bg-white/10 px-4 py-2 text-xs font-bold text-white hover:bg-white/20"
+          >
+            Part of Eazotel · Google Partner (verify status)
+          </a>
           <p className={`${rise} text-[clamp(16px,4.3vw,20px)] text-line`} style={delay(2)}>
             {hero.subtitle}
           </p>
