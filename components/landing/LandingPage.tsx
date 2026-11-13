@@ -55,7 +55,7 @@ export function LandingPage({ page }: { page: Page }) {
         <main>
           <Hero page={page} pageName={pageName} />
           {page.sections.map((section, i) => renderSection(section, i, page))}
-          <EazotelAppCTA />
+          <EazotelAppCTA page={page} />
           <FinalCta image={page.finalImage} waTopic={page.waTopic} />
         </main>
         <SiteFooter slug={page.slug} />
