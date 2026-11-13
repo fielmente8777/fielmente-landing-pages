@@ -1,6 +1,7 @@
 import Whatsapp from "@/components/ContactButton/WhatsApp";
 import { pages } from "@/content/pages";
 import GlobalLeadPopup from "@/components/GlobalLeadPopup";
+import GooglePartnerBadge from "@/components/GooglePartnerBadge";
 import { SITE_URL } from "@/content/site";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
@@ -133,6 +134,7 @@ export default function RootLayout({
 
       </head>
       <body className="m-0 overflow-x-hidden">{children}
+        <GooglePartnerBadge />
         <Whatsapp topics={contactTopics} />
         <GlobalLeadPopup topics={contactTopics} />
       </body>
